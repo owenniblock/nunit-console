@@ -76,11 +76,13 @@ namespace NUnit.Engine.Services
                     projectCount++;
             }
 
+            ProcessModel processModel = GetTargetProcessModel(package);
+
             // If we have multiple projects or a project plus assemblies
             // then defer to the AggregatingTestRunner, which will make
             // the decision on a file by file basis so that each project
             // runs with its own settings.
-            if (projectCount > 1 || projectCount > 0 && assemblyCount > 0)
+            if (projectCount > 1 || (projectCount > 0 && assemblyCount > 0) || (projectCount > 0 && processModel == ProcessModel.Default))
                 return new AggregatingTestRunner(ServiceContext, package);
 
             // If we have a single project by itself, make it the top level project.
@@ -88,8 +90,6 @@ namespace NUnit.Engine.Services
                 package = package.SubPackages[0];
 
             // TODO: What about bad extensions?
-
-            ProcessModel processModel = GetTargetProcessModel(package);
 
             switch (processModel)
             {

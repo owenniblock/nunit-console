@@ -151,6 +151,12 @@
       <Link>nunit.snk</Link>
     </None>
     <None Include="App.config" />
+    <Content Include="EngineTests.MultiAssemblySingleProcess.nunit">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EngineTests.MultiAssemblyDefaultProcess.nunit">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
