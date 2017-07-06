@@ -364,6 +364,8 @@ namespace NUnit.ConsoleRunner
         {
             TestPackage package = new TestPackage(options.InputFiles);
 
+            package.AddSetting(FrameworkPackageSettings.SynchronousEvents, true);
+
             if (options.ProcessModelSpecified)
                 package.AddSetting(EnginePackageSettings.ProcessModel, options.ProcessModel);
 
