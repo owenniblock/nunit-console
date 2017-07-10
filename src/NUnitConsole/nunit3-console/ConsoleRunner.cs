@@ -363,9 +363,7 @@ namespace NUnit.ConsoleRunner
         public static TestPackage MakeTestPackage(ConsoleOptions options)
         {
             TestPackage package = new TestPackage(options.InputFiles);
-
-            package.AddSetting(FrameworkPackageSettings.SynchronousEvents, true);
-
+            
             if (options.ProcessModelSpecified)
                 package.AddSetting(EnginePackageSettings.ProcessModel, options.ProcessModel);
 
@@ -422,6 +420,11 @@ namespace NUnit.ConsoleRunner
 
                 if (!options.NumberOfTestWorkersSpecified)
                     package.AddSetting(FrameworkPackageSettings.NumberOfTestWorkers, 0);
+            }
+
+            if (options.SynchronousEvents)
+            {
+                package.AddSetting(FrameworkPackageSettings.SynchronousEvents, true);
             }
 
             if (options.PauseBeforeRun)

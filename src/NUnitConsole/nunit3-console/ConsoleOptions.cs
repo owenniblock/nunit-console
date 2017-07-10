@@ -89,6 +89,8 @@ namespace NUnit.Common
 
         public bool DebugTests { get; private set; }
 
+        public bool SynchronousEvents { get; private set; }
+
         public bool DebugAgent { get; private set; }
 
         public bool ListExtensions { get; private set; }
@@ -153,6 +155,9 @@ namespace NUnit.Common
 
             this.Add("loaduserprofile", "Load user profile in test runner processes",
                 v => LoadUserProfile = v != null);
+
+            this.Add("synchronousevents", "Enable synchronous events during test runner process.",
+                v => SynchronousEvents = v != null);
 
             this.Add("skipnontestassemblies", "Skip any non-test assemblies specified, without error.",
                 v => SkipNonTestAssemblies = v != null);
